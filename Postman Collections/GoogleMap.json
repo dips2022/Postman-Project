@@ -1,0 +1,86 @@
+{
+	"info": {
+		"_postman_id": "971650ec-ff09-4539-9c09-ad482fa0e5a9",
+		"name": "Google Maps Add  API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Google Maps json format",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "efcfa683-453a-4e0b-856d-336a05bde105",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const jsondata = pm.response.json();\r",
+							"const pid = jsondata.place_id;\r",
+							"console.log(pid)\r",
+							"pm.environment.set(\"pid1\", pid);\r",
+							" "
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "0ec6b5fa-4c1b-4de5-bccf-06cedc485b07",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n\r\n    \"location\":{\r\n\r\n        \"lat\" : -38.383494,\r\n\r\n        \"lng\" : 33.427362\r\n\r\n    },\r\n\r\n    \"accuracy\":50,\r\n\r\n    \"name\":\"Frontline house\",\r\n\r\n    \"phone_number\":\"(+91) 983 893 3937\",\r\n\r\n    \"address\" : \"29, side layout, cohen 09\",\r\n\r\n    \"types\": [\"shoe park\",\"shop\"],\r\n\r\n    \"website\" : \"http://google.com\",\r\n\r\n    \"language\" : \"French-IN\"\r\n\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{Maps}}/maps/api/place/add/json"
+			},
+			"response": []
+		},
+		{
+			"name": "Google Maps Delete  API JSON",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cd3d1aee-ed19-429e-be0c-7a965f356363",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "6df5bcb4-eca2-4456-8e2e-1c35cd292c10",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"place_id\":\"{{pid1}}\"          \r\n}\r\n\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{Maps}}/maps/api/place/delete/json"
+			},
+			"response": []
+		}
+	]
+}
