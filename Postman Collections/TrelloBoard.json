@@ -1,0 +1,250 @@
+{
+	"info": {
+		"_postman_id": "bcd23f55-bfa3-4fca-86f3-818c5041c0aa",
+		"name": "Trello Board",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "977a3778-671a-4ed0-9e37-cecdd7912b99",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "3b4df62c-fe0a-4eb6-b78f-e8e89a800db4",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/boards/?name=Monday&key=9db7d8a21efb1b4d7df5925db707c204&token=ATTA86a6a68326b1b6fb2deb58194019d27a066da2e9de48424a6836a42f9a9768a5D0987A70",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Monday"
+						},
+						{
+							"key": "key",
+							"value": "9db7d8a21efb1b4d7df5925db707c204"
+						},
+						{
+							"key": "token",
+							"value": "ATTA86a6a68326b1b6fb2deb58194019d27a066da2e9de48424a6836a42f9a9768a5D0987A70"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a5d6d444-2149-493b-89e1-3baba8f5ffab",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "501fc27f-d5cc-4593-a3fa-5c66abba1752",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/boards/65bfb657c62bcb03243f8a3f?key=9db7d8a21efb1b4d7df5925db707c204&token=ATTA86a6a68326b1b6fb2deb58194019d27a066da2e9de48424a6836a42f9a9768a5D0987A70",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards",
+						"65bfb657c62bcb03243f8a3f"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "9db7d8a21efb1b4d7df5925db707c204"
+						},
+						{
+							"key": "token",
+							"value": "ATTA86a6a68326b1b6fb2deb58194019d27a066da2e9de48424a6836a42f9a9768a5D0987A70"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Boards",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8d71d1f6-548c-4beb-bffb-e989f1694208",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const jsondata = pm.response.json();\r",
+							"const lengthOfBook = jsondata.length;\r",
+							"console.log(lengthOfBook)\r",
+							" for(var i=0; i<lengthOfBook; i++){\r",
+							"    var js1 = jsondata[i];\r",
+							"    if(js1.name == \"Doing\"){\r",
+							"        var iid = js1.id;\r",
+							"        console.log(iid);\r",
+							"        pm.environment.set(\"BoardId\",iid);\r",
+							"\r",
+							"    }\r",
+							"    }"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "c5eb6722-0b2d-444c-8876-5f55c4f8692b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/boards/65bfb657c62bcb03243f8a3f/lists?key=9db7d8a21efb1b4d7df5925db707c204&token=ATTA86a6a68326b1b6fb2deb58194019d27a066da2e9de48424a6836a42f9a9768a5D0987A70",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards",
+						"65bfb657c62bcb03243f8a3f",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "9db7d8a21efb1b4d7df5925db707c204"
+						},
+						{
+							"key": "token",
+							"value": "ATTA86a6a68326b1b6fb2deb58194019d27a066da2e9de48424a6836a42f9a9768a5D0987A70"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Board",
+			"id": "5e5946a4-1814-4b10-aa66-f61ee63a47e7",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/boards/65c083b2f30b553a1cba305b?key=9db7d8a21efb1b4d7df5925db707c204&token=ATTA86a6a68326b1b6fb2deb58194019d27a066da2e9de48424a6836a42f9a9768a5D0987A70",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards",
+						"65c083b2f30b553a1cba305b"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "9db7d8a21efb1b4d7df5925db707c204"
+						},
+						{
+							"key": "token",
+							"value": "ATTA86a6a68326b1b6fb2deb58194019d27a066da2e9de48424a6836a42f9a9768a5D0987A70"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Board",
+			"id": "59056836-8a1b-45a6-9fa0-c725603d5892",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/boards/65bfb657c62bcb03243f8a47?key=9db7d8a21efb1b4d7df5925db707c204&token=ATTA86a6a68326b1b6fb2deb58194019d27a066da2e9de48424a6836a42f9a9768a5D0987A70",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards",
+						"65bfb657c62bcb03243f8a47"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "9db7d8a21efb1b4d7df5925db707c204"
+						},
+						{
+							"key": "token",
+							"value": "ATTA86a6a68326b1b6fb2deb58194019d27a066da2e9de48424a6836a42f9a9768a5D0987A70"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
