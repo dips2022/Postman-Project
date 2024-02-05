@@ -1,0 +1,92 @@
+{
+	"info": {
+		"_postman_id": "6e65c503-caa8-4c75-ac4d-0a99ca56d147",
+		"name": "Dummy Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Employee",
+			"id": "fc9f1a50-60a5-46b6-837a-99ee71d89187",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{Dummy}}/api/v1/employees"
+			},
+			"response": []
+		},
+		{
+			"name": "Employee Id",
+			"id": "97c25613-77ea-4642-a6ed-1fd120104566",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{Dummy}}/api/v1/employee/719"
+			},
+			"response": []
+		},
+		{
+			"name": "Create",
+			"id": "cb71cfe9-760f-41be-b39f-b9b357d7a409",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"test\",\"salary\":\"123\",\"age\":\"23\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{Dummy}}/api/v1/create"
+			},
+			"response": []
+		},
+		{
+			"name": "Update id",
+			"id": "f9ff8046-55ea-4b01-b6cb-4952182d4386",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"dipali\",\"salary\":\"40000\",\"age\":\"24\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{Dummy}}/api/v1/update/21"
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"id": "7923b01e-6c38-4e9f-95a9-bfa698238654",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{Dummy}}/api/v1/delete/2"
+			},
+			"response": []
+		}
+	]
+}
