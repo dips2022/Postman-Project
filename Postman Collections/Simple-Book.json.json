@@ -1,0 +1,363 @@
+{
+	"info": {
+		"_postman_id": "4957bbcf-0fa8-45e7-9ca3-aaad4cdc3ff4",
+		"name": "Simple Book API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Status of Book",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "824e03cf-d87b-4dc8-8223-39c2ff8eae92",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							" "
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "3340f8aa-56b4-481c-9218-8297b668c921",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{ BaseUrl}}/status"
+			},
+			"response": []
+		},
+		{
+			"name": "List of books",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a496eb27-cdd6-4a09-a0a8-af76089fe583",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const jsondata = pm.response.json();\r",
+							"const lengthOfBook = jsondata.length;\r",
+							"console.log(lengthOfBook)\r",
+							" for(var i=0; i<lengthOfBook; i++){\r",
+							"    var js1 = jsondata[i];\r",
+							"    if(js1.name == \"Just as I Am\"){\r",
+							"        var iid = js1.id;\r",
+							"        console.log(iid);\r",
+							"        pm.environment.set(\"book id\",iid);\r",
+							"\r",
+							"    }\r",
+							"     \r",
+							" }\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "04041664-b6a2-42b4-bc0a-a8ba41b01386",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{ BaseUrl}}/books"
+			},
+			"response": []
+		},
+		{
+			"name": "Get a single book",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ea5dc2b5-5bf9-407b-8b98-6ba5b738dbd5",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							" "
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "1a3e4145-747d-4708-af4b-f088c3008ab2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{ BaseUrl}}/books/{{bookid}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Submit an order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b7f38181-edf4-4ae4-a5be-fdb5fab3f487",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							" "
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "f649f1dc-fc51-49ca-9248-9f073839f9be",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{AccessToken}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"bookId\": 1,\r\n  \"customerName\": \"John\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{ BaseUrl}}/orders/"
+			},
+			"response": []
+		},
+		{
+			"name": "API Authentication",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8156f8bb-c10e-40ba-adbf-d87f186a12c3",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "f54ed054-3b96-450c-af5a-53a3ba9ca2ac",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{AccessToken}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"clientName\": \"Postman\",\r\n   \"clientEmail\": \"Dipali@example.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{ BaseUrl}}/api-clients/"
+			},
+			"response": []
+		},
+		{
+			"name": "Get all orders",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "da759d02-7319-407e-a4d9-78b8ba7d60d5",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const jsondata = pm.response.json();\r",
+							" \r",
+							"var count = jsondata.length;\r",
+							"console.log(count);\r",
+							"for(var i =0; i<count; i++){\r",
+							"    var biid =  jsondata[i];\r",
+							"    if(biid.timestamp == \"1706637711507\"){\r",
+							"        var bookid =  biid.id;\r",
+							"        console.log(bookid);\r",
+							"          pm.environment.set(\"orders1\",bookid);\r",
+							"    }\r",
+							"}\r",
+							"\r",
+							" \r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "fe376304-324c-4338-9e65-0ad5d4cca5cc",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{AccessToken}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{ BaseUrl}}/orders"
+			},
+			"response": []
+		},
+		{
+			"name": "Get an order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0f963546-56a3-4bcf-89df-b0faefcfedbb",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "18eec43c-3e96-456c-bc09-461483a165e3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{AccessToken}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{ BaseUrl}}/orders/{{orders1}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Update an order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4c4ebc1d-35c3-4fca-94b8-e5c6f004fb16",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "ebdc3baf-59e7-4e78-8dd9-148289c2820a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{AccessToken}}"
+					}
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customerName\": \"Dipali\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{ BaseUrl}}/{{orders1}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an order",
+			"id": "19f351a3-23aa-44f0-af14-8ffeeaa79e87",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{AccessToken}}"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "{{ BaseUrl}}/orders/RzIvXXT5QCAk_OFjzv37n"
+			},
+			"response": []
+		}
+	]
+}
