@@ -1,0 +1,272 @@
+{
+	"info": {
+		"_postman_id": "a0334ef8-dca6-4b06-a108-106365c208a0",
+		"name": "Reqres",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List Users",
+			"id": "54f340bc-72bd-479d-894b-0b7132269b1b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users?page=2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Single Users",
+			"id": "8721e647-24f4-4248-9a7f-5657b3e9b261",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{Reqres}}/api/users/2"
+			},
+			"response": []
+		},
+		{
+			"name": "Single User Not Found",
+			"id": "0164e43e-b9c0-48d7-af30-b611bea91d9c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{Reqres}}/api/users/23"
+			},
+			"response": []
+		},
+		{
+			"name": "List Resource",
+			"id": "0eef4531-ec2e-4add-878e-d398330067d2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{Reqres}}/api/unknown"
+			},
+			"response": []
+		},
+		{
+			"name": "Single Resource",
+			"id": "266ce22f-a418-46ca-9f6d-a4f2c337585c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{Reqres}}/api/unknown/2"
+			},
+			"response": []
+		},
+		{
+			"name": "Single Resource Not Found",
+			"id": "35a9a151-830d-4d85-a94e-afb8c6b690f2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{Reqres}}/api/unknown/23"
+			},
+			"response": []
+		},
+		{
+			"name": "Create",
+			"id": "ba6b4bf5-6aab-4a18-971e-e0e8ba487d86",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "{{Reqres}}/api/users"
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"id": "027d32b0-5898-41e7-a28d-cb4f2301d486",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": "{{Reqres}}/api/users/2"
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"id": "9eea61cd-ec1c-4adb-bbe0-ca7cd4230b67",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": "{{Reqres}}/api/users/2"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"id": "7069d73e-8b1c-4dd0-951d-c7ac9fa704b8",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{Reqres}}/api/users/2"
+			},
+			"response": []
+		},
+		{
+			"name": "Register successful",
+			"id": "953a48b6-44ca-4f19-862f-b6fa6d83e2c3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"eve.holt@reqres.in\",\r\n    \"password\": \"pistol\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{Reqres}}/api/register"
+			},
+			"response": []
+		},
+		{
+			"name": "Register Unsuccessful",
+			"id": "250842c5-5ac1-4b75-874f-2d60ed4ef53a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"sydney@fife\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{Reqres}}/api/register"
+			},
+			"response": []
+		},
+		{
+			"name": "Login Successful",
+			"id": "181bea64-d3aa-48e0-8a5d-c7792bf46db4",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"eve.holt@reqres.in\",\r\n    \"password\": \"cityslicka\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{Reqres}}/api/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login Unsuccessful",
+			"id": "50b8096b-63c4-400a-ab9f-72db58656035",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"peter@klaven\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{Reqres}}/api/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Delayed Responce",
+			"id": "c0ea5b6d-a446-42f5-af03-19b0851b7e04",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Reqres}}/api/users?delay=3",
+					"host": [
+						"{{Reqres}}"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "delay",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
