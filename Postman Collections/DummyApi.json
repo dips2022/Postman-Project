@@ -38,6 +38,12 @@
 				"disableBodyPruning": true
 			},
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{Dummy}}"
+					}
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
